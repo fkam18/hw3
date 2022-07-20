@@ -1,0 +1,8 @@
+# create cluster
+# go to tf3 -> terraform apply
+# go to deploy directory -> makeit
+# go to gke-prometheus directory -> makeit
+# cleanup if necessary - reverse order -> cleanup 
+# done
+
+

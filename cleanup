@@ -1,0 +1,5 @@
+#!/bin/bash
+kubectl delete all --all -n monitor-prometheus
+kubectl delete namespace monitor-prometheus
+kubectl delete service nodejsapp
+terraform destroy

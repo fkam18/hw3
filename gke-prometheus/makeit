@@ -1,0 +1,13 @@
+#!/bin/bash
+#prom stuff
+ACCOUNT=$(gcloud info --format='value(config.account)')
+kubectl create clusterrolebinding owner-cluster-admin-binding --clusterrole cluster-admin --user $ACCOUNT
+kubectl get clusterrolebinding |grep owner-cluster-admin-binding
+kubectl create namespace monitor-prometheus
+kubectl create -f clusterRole.yaml
+kubectl create -f config-map.yaml
+kubectl create  -f prometheus-deployment.yaml
+kubectl get deployments --namespace=monitor-prometheus
+kubectl get pods --namespace=monitor-prometheus
+kubectl create -f prometheus-service.yaml --namespace=monitor-prometheus
+kubectl get svc --namespace=monitor-prometheus

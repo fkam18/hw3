@@ -1,0 +1,13 @@
+#!/bin/bash
+# authenticate kubectl
+# https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl  
+#fkam@fkam-ThinkPad-W540:~/projects/hw1/deploy$ gcloud container clusters list
+#NAME                LOCATION      MASTER_VERSION  MASTER_IP       MACHINE_TYPE   NODE_VERSION    NUM_NODES  STATUS
+#hw1proj-356816-gke  europe-west4  1.22.8-gke.202  35.204.215.160  n1-standard-1  1.22.8-gke.202  9          RECONCILING
+#fkam@fkam-ThinkPad-W540:~/projects/hw1/deploy$ 
+# wait till STATUS is READY
+#
+gcloud container clusters get-credentials hw1proj-356816-gke --region europe-west4
+
+kubectl apply -f deploy2.yaml
+kubectl apply -f balance1.yaml

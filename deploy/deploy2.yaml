@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nodejsapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: nodejsapp
+  template:
+    metadata:
+      labels:
+        name: nodejsapp
+    spec:
+      containers:
+        - name: app
+          image: fkam18/nodejsapp:1.0
+          ports:
+            - containerPort: 3000
