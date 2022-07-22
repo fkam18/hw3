@@ -1,3 +1,7 @@
+2207222135 fkam
+- added deploy-tf 
+	- using terraform to specify the deployment 
+
 2207201458 fkam
 - folder application
 	- created docker image as fkam18/nodejsapp:1.0
