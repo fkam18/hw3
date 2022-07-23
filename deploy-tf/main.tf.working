@@ -15,18 +15,20 @@ provider "kubernetes" {
 # KUBERNETES DEPLOYMENT COLOR APP
 #-----------------------------------------
 
-resource "kubernetes_deployment" "app" {
+resource "kubernetes_deployment" "color" {
     metadata {
-        name = "hw3app"
+        name = "color-blue-dep"
         labels = {
-            app   = "hw3app"
+            app   = "color"
+            color = "blue"
         } 
     } 
     
     spec {
         selector {
             match_labels = {
-                app   = "hw3app"
+                app   = "color"
+                color = "blue"
             } //match_labels
         } //selector
 
@@ -37,19 +39,20 @@ resource "kubernetes_deployment" "app" {
         template { 
             metadata {
                 labels = {
-                    app   = "hw3app"
+                    app   = "color"
+                    color = "blue"
                 } //labels
             } //metadata
 
             spec {
                 container {
                     image = "fkam18/nodejsapp:1.0"   #Docker image name
-                    name  = "hw3app"          #Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL).
+                    name  = "color-blue"          #Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL).
                     
                     #Block of string name and value pairs to set in the container's environment
                     env { 
-                        name = "app"
-                        value = "hw3app"
+                        name = "COLOR"
+                        value = "blue"
                     } //env
                     
                     #List of ports to expose from the container.
@@ -77,16 +80,15 @@ resource "kubernetes_deployment" "app" {
 # KUBERNETES DEPLOYMENT COLOR SERVICE NODE PORT
 #-------------------------------------------------
 
-resource "kubernetes_service" "hw3srv" {
+resource "kubernetes_service" "color-service-np" {
   metadata {
-    name = "hw3srv"
+    name = "color-service-np"
   } //metadata
   spec {
     selector = {
-      app = "hw3app"
+      app = "color"
     } //selector
-//    session_affinity = "ClientIP"
-//    load_balancer_ip = "34.91.70.114"
+    session_affinity = "ClientIP"
     port {
       port      = 80
 //      node_port = 30085

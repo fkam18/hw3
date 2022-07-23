@@ -85,8 +85,7 @@ resource "kubernetes_service" "hw3srv" {
     selector = {
       app = "hw3app"
     } //selector
-//    session_affinity = "ClientIP"
-//    load_balancer_ip = "34.91.70.114"
+    session_affinity = "ClientIP"
     port {
       port      = 80
 //      node_port = 30085
