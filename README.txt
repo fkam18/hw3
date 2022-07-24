@@ -5,6 +5,8 @@
 - added cicd-selfhost for script based jenkin like cicd pipeline
 	- just add a hook to call cicd-selfhost/makeit when there's a commit
 	- will auto update docker image and force cluster to reload updated image
+- next step is to do terraform cloudbuild pipeline
+
 2207222135 fkam
 - added deploy-tf 
 	- using terraform to specify the deployment 
