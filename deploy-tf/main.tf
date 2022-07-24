@@ -43,7 +43,7 @@ resource "kubernetes_deployment" "app" {
 
             spec {
                 container {
-                    image = "fkam18/nodejsapp:1.0"   #Docker image name
+                    image = "gcr.io/hw1proj-356816/nodejsapp:latest"   #Docker image name
                     name  = "hw3app"          #Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL).
                     
                     #Block of string name and value pairs to set in the container's environment

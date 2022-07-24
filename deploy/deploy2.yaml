@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: app
-          image: fkam18/nodejsapp:1.0
+          image: gcr.io/hw1proj-356816/nodejsapp:latest
           ports:
             - containerPort: 3000
