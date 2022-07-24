@@ -1,0 +1,12 @@
+#!/bin/bash
+rm -rf nodejsapp
+git clone https://github.com/fkam18/nodejsapp.git
+cd nodejsapp
+docker build -t nodejsapp:latest .
+docker tag nodejsapp:latest gcr.io/hw1proj-356816/nodejsapp:latest
+docker push gcr.io/hw1proj-356816/nodejsapp:latest
+# sleep to let image get stable
+sleep 5
+# force cluster to reload new image
+kubectl scale rs -l app=hw3app --replicas=0
+kubectl scale rs -l app=hw3app --replicas=3
